@@ -11,7 +11,7 @@ namespace CarritoDeCompras.Tests
         [SetUp]
         public void Setup()
         {
-            _tempDir = Path.Combine(Path.GetTempPath(), "YouthfulCommerceTests", Guid.NewGuid().ToString("N"));
+            _tempDir = Path.Combine(Path.GetTempPath(), "Tarea01ExperimentosTests", Guid.NewGuid().ToString("N"));
             Directory.CreateDirectory(_tempDir);
 
             _rutaCatalogo = Path.Combine(_tempDir, "catalogo_test.txt");

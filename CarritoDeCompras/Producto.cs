@@ -1,16 +1,53 @@
 using System;
+using System.Globalization;
 using System.Text;
 
 namespace CarritoDeCompras
 {
     public class Producto
     {
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string Category { get; set; }
-        public string Description { get; set; }
-        public string Code { get; set; }
-        public int Quantity { get; set; }
+        private string _name = string.Empty;
+        private decimal _price;
+        private string _category = string.Empty;
+        private string _description = string.Empty;
+        private string _code = string.Empty;
+        private int _quantity;
+
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
+
+        public decimal Price
+        {
+            get => _price;
+            set => _price = ValidatePrice(value);
+        }
+
+        public string Category
+        {
+            get => _category;
+            set => _category = value;
+        }
+
+        public string Description
+        {
+            get => _description;
+            set => _description = value;
+        }
+
+        public string Code
+        {
+            get => _code;
+            set => _code = value;
+        }
+
+        public int Quantity
+        {
+            get => _quantity;
+            set => _quantity = ValidateQuantity(value);
+        }
 
         public Producto(string name, decimal price, string category, string description, string code, int quantity)
         {
@@ -29,6 +66,26 @@ namespace CarritoDeCompras
             Description = description;
             Quantity = quantity;
             Code = GenerarCodigoProducto();
+        }
+
+        private static decimal ValidatePrice(decimal price)
+        {
+            if (price <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(price), "El precio debe ser mayor que cero.");
+            }
+
+            return price;
+        }
+
+        private static int ValidateQuantity(int quantity)
+        {
+            if (quantity < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(quantity), "La cantidad no puede ser negativa.");
+            }
+
+            return quantity;
         }
 
         private static string GenerarCodigoProducto()
@@ -78,12 +135,23 @@ namespace CarritoDeCompras
         public void updatePrice()
         {
             Console.WriteLine("Ingrese el new precio del producto:");
-            decimal newPrice;
-            while (!decimal.TryParse(Console.ReadLine(), out newPrice))
+            while (true)
             {
-                Console.WriteLine("Por favor, ingrese un precio válido:");
+                string? entrada = Console.ReadLine();
+                if (TryReadPrice(entrada, out decimal newPrice) && newPrice > 0)
+                {
+                    Price = newPrice;
+                    return;
+                }
+
+                Console.WriteLine("Por favor, ingrese un precio válido mayor que cero:");
             }
-            Price = newPrice;
+        }
+
+        private static bool TryReadPrice(string? input, out decimal price)
+        {
+            return decimal.TryParse(input, NumberStyles.Number, CultureInfo.InvariantCulture, out price) ||
+                   decimal.TryParse(input, NumberStyles.Number, CultureInfo.CurrentCulture, out price);
         }
         public void updateCategory()
         {
@@ -107,9 +175,9 @@ namespace CarritoDeCompras
         {
             Console.WriteLine("Ingrese la nueva cantidad del producto:");
             int newQuantity;
-            while (!int.TryParse(Console.ReadLine(), out newQuantity))
+            while (!int.TryParse(Console.ReadLine(), out newQuantity) || newQuantity < 0)
             {
-                Console.WriteLine("Por favor, ingrese una cantidad válida:");
+                Console.WriteLine("Por favor, ingrese una cantidad válida mayor o igual a cero:");
             }
             Quantity = newQuantity;
         }

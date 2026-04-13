@@ -81,6 +81,11 @@ namespace CarritoDeCompras
                 return false;
             }
 
+            if (precio <= 0 || cantidad < 0)
+            {
+                return false;
+            }
+
             producto = new Producto(
                 Unescape(campos[1]),
                 precio,

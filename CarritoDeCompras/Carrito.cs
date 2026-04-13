@@ -66,7 +66,7 @@ namespace CarritoDeCompras
             CambiarPantalla("=== REGISTRAR PRODUCTO ===");
 
             string nombre = ReadNonEmptyText("Nombre: ");
-            decimal precio = ReadDecimal("Precio: ");
+            decimal precio = ReadDecimal("Precio: ", allowZero: false);
             string categoria = ReadNonEmptyText("Categoría: ");
             string descripcion = ReadNonEmptyText("Descripción: ");
             int cantidad = ReadInt("Cantidad: ", allowZero: true);
@@ -261,7 +261,7 @@ namespace CarritoDeCompras
                         producto.Name = ReadNonEmptyText("Nuevo nombre: ");
                         break;
                     case 2:
-                        producto.Price = ReadDecimal("Nuevo precio: ");
+                        producto.Price = ReadDecimal("Nuevo precio: ", allowZero: false);
                         break;
                     case 3:
                         producto.Category = ReadNonEmptyText("Nueva categoría: ");
@@ -426,7 +426,7 @@ namespace CarritoDeCompras
             return valor.Trim();
         }
 
-        private static decimal ReadDecimal(string mensaje)
+        private static decimal ReadDecimal(string mensaje, bool allowZero = true)
         {
             decimal valor;
 
@@ -438,13 +438,20 @@ namespace CarritoDeCompras
                 if (decimal.TryParse(entrada, NumberStyles.Number, CultureInfo.InvariantCulture, out valor) ||
                     decimal.TryParse(entrada, NumberStyles.Number, CultureInfo.CurrentCulture, out valor))
                 {
-                    if (valor >= 0)
+                    if (allowZero && valor >= 0)
+                    {
+                        return valor;
+                    }
+
+                    if (!allowZero && valor > 0)
                     {
                         return valor;
                     }
                 }
 
-                Console.WriteLine("Valor inválido. Ingrese un número decimal válido (>= 0).");
+                Console.WriteLine(allowZero
+                    ? "Valor inválido. Ingrese un número decimal válido (>= 0)."
+                    : "Valor inválido. Ingrese un número decimal válido (> 0).");
             }
         }
 

@@ -7,7 +7,7 @@ namespace CarritoDeCompras.Tests
         [Test]
         public void ObtenerCatalogo_CuandoArchivoExiste_CargaProductos()
         {
-            string tempDir = Path.Combine(Path.GetTempPath(), "YouthfulCommerceTests", Guid.NewGuid().ToString("N"));
+            string tempDir = Path.Combine(Path.GetTempPath(), "Tarea01ExperimentosTests", Guid.NewGuid().ToString("N"));
             Directory.CreateDirectory(tempDir);
 
             string rutaCatalogo = Path.Combine(tempDir, "catalogo_test.txt");
