@@ -1,0 +1,42 @@
+========================================
+Recibo: RCB-20260412-101530
+Fecha: 2026-04-12 10:15:30
+Detalles:
+- Zapatillas Urban Move (PROD-001) | Cantidad: 1 | Precio: 59.90 | Subtotal: 59.90
+- Polo Essential Cotton (PROD-002) | Cantidad: 2 | Precio: 19.50 | Subtotal: 39.00
+TOTAL: 98.90
+========================================
+
+========================================
+Recibo: RCB-20260412-114205
+Fecha: 2026-04-12 11:42:05
+Detalles:
+- Mochila Metro 22L (PROD-003) | Cantidad: 1 | Precio: 42.00 | Subtotal: 42.00
+- Botella Térmica Trail 750ml (PROD-005) | Cantidad: 3 | Precio: 24.75 | Subtotal: 74.25
+TOTAL: 116.25
+========================================
+
+========================================
+Recibo: RCB-20260412-173810
+Fecha: 2026-04-12 17:38:10
+Detalles:
+- Audífonos Pulse Mini (PROD-004) | Cantidad: 1 | Precio: 74.99 | Subtotal: 74.99
+TOTAL: 74.99
+========================================
+========================================
+Recibo: RCB-20260412-223511
+Fecha: 2026-04-12 22:35:11
+Detalles:
+- Botella Térmica Trail 750ml (PROD-005) | Cantidad: 11 | Precio: 24.75 | Subtotal: 272.25
+- Audífonos Pulse Mini (PROD-004) | Cantidad: 2 | Precio: 74.99 | Subtotal: 149.98
+TOTAL: 422.23
+========================================
+
+========================================
+Recibo: RCB-20260412-223541
+Fecha: 2026-04-12 22:35:41
+Detalles:
+- Zapatillas Urban Move (PROD-001) | Cantidad: 2 | Precio: 59.90 | Subtotal: 119.80
+TOTAL: 119.80
+========================================
+
